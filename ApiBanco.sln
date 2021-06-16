@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiBanco", "ApiBanco\ApiBanco.csproj", "{5620026D-646E-44BA-AC0F-7AFBE04A39EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{A4310A5D-A36E-4A68-AD95-A99CD869C83A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositorio", "Repositorio\Repositorio.csproj", "{40EFC5EA-CAF8-42BF-95BB-BEDCCAF9289E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5620026D-646E-44BA-AC0F-7AFBE04A39EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5620026D-646E-44BA-AC0F-7AFBE04A39EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5620026D-646E-44BA-AC0F-7AFBE04A39EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5620026D-646E-44BA-AC0F-7AFBE04A39EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4310A5D-A36E-4A68-AD95-A99CD869C83A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4310A5D-A36E-4A68-AD95-A99CD869C83A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4310A5D-A36E-4A68-AD95-A99CD869C83A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4310A5D-A36E-4A68-AD95-A99CD869C83A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40EFC5EA-CAF8-42BF-95BB-BEDCCAF9289E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EFC5EA-CAF8-42BF-95BB-BEDCCAF9289E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EFC5EA-CAF8-42BF-95BB-BEDCCAF9289E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EFC5EA-CAF8-42BF-95BB-BEDCCAF9289E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22F6CF46-85DE-4CC8-9BE1-963F7EC6D623}
+	EndGlobalSection
+EndGlobal
