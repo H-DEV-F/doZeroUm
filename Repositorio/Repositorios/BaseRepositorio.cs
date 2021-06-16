@@ -9,44 +9,44 @@ namespace Repositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-        protected readonly BancoContexto CirclesPratasContexto;
+        protected readonly BancoContexto BancoContexto;
 
-        public BaseRepositorio(BancoContexto circlesPratasContexto)
+        public BaseRepositorio(BancoContexto bancoContexto)
         {
-            CirclesPratasContexto = circlesPratasContexto;
+            BancoContexto = bancoContexto;
         }
 
         public void Adicionar(TEntity entity)
         {
-            CirclesPratasContexto.Set<TEntity>().Add(entity);
-            CirclesPratasContexto.SaveChanges();
+            BancoContexto.Set<TEntity>().Add(entity);
+            BancoContexto.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            CirclesPratasContexto.Set<TEntity>().Update(entity);
-            CirclesPratasContexto.SaveChanges();
+            BancoContexto.Set<TEntity>().Update(entity);
+            BancoContexto.SaveChanges();
         }
 
         public TEntity ObterPorId(int id)
         {
-            return CirclesPratasContexto.Set<TEntity>().Find(id);
+            return BancoContexto.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            return CirclesPratasContexto.Set<TEntity>().ToList();
+            return BancoContexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            CirclesPratasContexto.Remove(entity);
-            CirclesPratasContexto.SaveChanges();
+            BancoContexto.Remove(entity);
+            BancoContexto.SaveChanges();
         }
 
         public void Dispose()
         {
-            CirclesPratasContexto.Dispose();
+            BancoContexto.Dispose();
         }
     }
 }
