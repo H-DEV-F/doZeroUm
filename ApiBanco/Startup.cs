@@ -26,14 +26,17 @@ namespace ApiBanco
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddMvc();
             services.AddControllers();
             var connectionString = Configuration.GetConnectionString("db_banco");
             services.AddDbContext<BancoContexto>(option =>
                                                 option.UseSqlServer(connectionString, m => m.MigrationsAssembly("Repositorio")));
 
+            /*
             services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
             services.AddScoped<IContaRepositorio, ContaRepositorio>();
             services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            */
 
             services.AddSwaggerGen(c =>
             {
