@@ -6,8 +6,6 @@ namespace Repositorio.Repositorios
 {
     public class ContatoRepositorio : BaseRepositorio<Contato>, IContatoRepositorio
     {
-        public ContatoRepositorio(BancoContexto bancoContexto) : base(bancoContexto)
-        {
-        }
+        public ContatoRepositorio(BancoContexto bancoContexto) : base(bancoContexto) {}
     }
 }

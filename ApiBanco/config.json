@@ -1,5 +1,5 @@
 {
   "ConnectionStrings": {
-    "db_marketplace": "Server=(localdb)\\mssqllocaldb;Database=Banco.ConsoleApp.NewDb;Trusted_Connection=True"
+    "db_banco": "Server=(localdb)\\mssqllocaldb;Database=BANCO;Trusted_Connection=True"
   }
 }
