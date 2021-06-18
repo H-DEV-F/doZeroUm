@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Dominio.Entidades
 {
@@ -8,7 +9,9 @@ namespace Dominio.Entidades
         public string Nome { get; set; }
         public string Email { get; set; }
         public string CPFCNPJ { get; set; }
+        [JsonIgnore]
         public virtual List<Contato> Contatos { get; set; }
+        [JsonIgnore]
         public virtual Conta Conta { get; set; }
     }
 }

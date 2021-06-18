@@ -7,7 +7,7 @@ namespace Repositorio.Contexto
     {
         DbSet<Cliente> Clientes { get; set; }
         DbSet<Contato> Contatos { get; set; }
-        DbSet<Conta> Conta { get; set; }
+        DbSet<Conta> Contas { get; set; }
 
         public BancoContexto(DbContextOptions options) : base(options) {}
     }

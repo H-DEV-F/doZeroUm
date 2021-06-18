@@ -9,8 +9,8 @@ using Repositorio.Contexto;
 namespace Repositorio.Migrations
 {
     [DbContext(typeof(BancoContexto))]
-    [Migration("20210618043143_Create DBBANCO")]
-    partial class CreateDBBANCO
+    [Migration("20210618203845_M1.0")]
+    partial class M10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,7 +68,7 @@ namespace Repositorio.Migrations
                     b.HasIndex("ClienteId")
                         .IsUnique();
 
-                    b.ToTable("Conta");
+                    b.ToTable("Contas");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Contato", b =>
@@ -81,8 +81,8 @@ namespace Repositorio.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Telefone")
-                        .HasColumnType("int");
+                    b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TipoContato")
                         .HasColumnType("int");
@@ -96,7 +96,7 @@ namespace Repositorio.Migrations
 
             modelBuilder.Entity("Dominio.Entidades.Conta", b =>
                 {
-                    b.HasOne("Dominio.Entidades.Cliente", null)
+                    b.HasOne("Dominio.Entidades.Cliente", "Cliente")
                         .WithOne("Conta")
                         .HasForeignKey("Dominio.Entidades.Conta", "ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)

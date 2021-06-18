@@ -2,7 +2,7 @@
 
 namespace Repositorio.Migrations
 {
-    public partial class CreateDBBANCO : Migration
+    public partial class M10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,7 +22,7 @@ namespace Repositorio.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Conta",
+                name: "Contas",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -35,9 +35,9 @@ namespace Repositorio.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Conta", x => x.Id);
+                    table.PrimaryKey("PK_Contas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Conta_Clientes_ClienteId",
+                        name: "FK_Contas_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "Id",
@@ -52,7 +52,7 @@ namespace Repositorio.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClienteId = table.Column<int>(nullable: false),
                     TipoContato = table.Column<int>(nullable: false),
-                    Telefone = table.Column<int>(nullable: false)
+                    Telefone = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,8 +66,8 @@ namespace Repositorio.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Conta_ClienteId",
-                table: "Conta",
+                name: "IX_Contas_ClienteId",
+                table: "Contas",
                 column: "ClienteId",
                 unique: true);
 
@@ -80,7 +80,7 @@ namespace Repositorio.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Conta");
+                name: "Contas");
 
             migrationBuilder.DropTable(
                 name: "Contatos");

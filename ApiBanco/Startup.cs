@@ -32,11 +32,11 @@ namespace ApiBanco
             services.AddDbContext<BancoContexto>(option =>
                                                 option.UseSqlServer(connectionString, m => m.MigrationsAssembly("Repositorio")));
 
-            /*
+            #region scopeservice
             services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
             services.AddScoped<IContaRepositorio, ContaRepositorio>();
             services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
-            */
+            #endregion
 
             services.AddSwaggerGen(c =>
             {

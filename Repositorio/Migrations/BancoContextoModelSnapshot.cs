@@ -66,7 +66,7 @@ namespace Repositorio.Migrations
                     b.HasIndex("ClienteId")
                         .IsUnique();
 
-                    b.ToTable("Conta");
+                    b.ToTable("Contas");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Contato", b =>
@@ -79,8 +79,8 @@ namespace Repositorio.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Telefone")
-                        .HasColumnType("int");
+                    b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TipoContato")
                         .HasColumnType("int");
@@ -94,7 +94,7 @@ namespace Repositorio.Migrations
 
             modelBuilder.Entity("Dominio.Entidades.Conta", b =>
                 {
-                    b.HasOne("Dominio.Entidades.Cliente", null)
+                    b.HasOne("Dominio.Entidades.Cliente", "Cliente")
                         .WithOne("Conta")
                         .HasForeignKey("Dominio.Entidades.Conta", "ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
