@@ -71,9 +71,7 @@ namespace ApiBanco
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}/{id2?}/{id3?}");
+                endpoints.MapControllers();
             });
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");
