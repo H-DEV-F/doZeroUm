@@ -18,6 +18,33 @@ namespace Repositorio.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Dominio.Entidades.Agencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Bairro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CEP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cidade")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Endereco")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agencias");
+                });
+
             modelBuilder.Entity("Dominio.Entidades.Cliente", b =>
                 {
                     b.Property<int>("Id")
@@ -63,6 +90,8 @@ namespace Repositorio.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AgenciaId");
+
                     b.HasIndex("ClienteId")
                         .IsUnique();
 
@@ -94,6 +123,12 @@ namespace Repositorio.Migrations
 
             modelBuilder.Entity("Dominio.Entidades.Conta", b =>
                 {
+                    b.HasOne("Dominio.Entidades.Agencia", "Agencia")
+                        .WithMany("Contas")
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Dominio.Entidades.Cliente", "Cliente")
                         .WithOne("Conta")
                         .HasForeignKey("Dominio.Entidades.Conta", "ClienteId")

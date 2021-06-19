@@ -41,6 +41,52 @@ namespace ApiBanco.Controllers
             }
         }
 
+        [Route("ClienteId/{id?}"), HttpGet]
+        public async Task<IActionResult> ObterPorClienteId([FromRoute] int id = 0)
+        {
+            if (id != 0)
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var conta = _contaRepositorio.ObterTodos().Where(c => c.ClienteId == id); ;
+                if (conta.Count() > 0) return NotFound();
+                return Ok(conta);
+            }
+            else
+            {
+                try
+                {
+                    return Ok(_contaRepositorio.ObterTodos());
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+        }
+
+        [Route("ClienteId/AgenciaId/{id?}"), HttpGet]
+        public async Task<IActionResult> ObterPorAgenciaId([FromRoute] int id = 0)
+        {
+            if (id != 0)
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var conta = _contaRepositorio.ObterTodos().Where(c => c.AgenciaId == id); ;
+                if (conta.Count() > 0) return NotFound();
+                return Ok(conta);
+            }
+            else
+            {
+                try
+                {
+                    return Ok(_contaRepositorio.ObterTodos());
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Adicionar([FromBody] Conta conta)
         {

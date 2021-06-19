@@ -8,12 +8,12 @@ namespace ApiBanco.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ContatoController : ControllerBase
+    public class AgenciaController : ControllerBase
     {
-        private readonly IContatoRepositorio _contatoRepositorio;
-        public ContatoController(IContatoRepositorio contatoRepositorio)
+        private readonly IAgenciaRepositorio _agenciaRepositorio;
+        public AgenciaController(IAgenciaRepositorio agenciaRepositorio)
         {
-            _contatoRepositorio = contatoRepositorio;
+            _agenciaRepositorio = agenciaRepositorio;
         }
 
         [Route("{id?}"), HttpGet]
@@ -22,7 +22,7 @@ namespace ApiBanco.Controllers
             if (id != 0)
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-                var contato = _contatoRepositorio.ObterPorId(id);
+                var contato = _agenciaRepositorio.ObterPorId(id);
                 if (contato == null) return NotFound();
                 return Ok(contato);
             }
@@ -30,7 +30,7 @@ namespace ApiBanco.Controllers
             {
                 try
                 {
-                    return Ok(_contatoRepositorio.ObterTodos());
+                    return Ok(_agenciaRepositorio.ObterTodos());
                 }
                 catch (Exception ex)
                 {
@@ -40,27 +40,27 @@ namespace ApiBanco.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Adicionar([FromBody] Contato contato)
+        public async Task<IActionResult> Adicionar([FromBody] Agencia agencia)
         {
             if (!ModelState.IsValid) return BadRequest();
-            _contatoRepositorio.Adicionar(contato);
-            return Ok(contato);
+            _agenciaRepositorio.Adicionar(agencia);
+            return Ok(agencia);
         }
 
         [Route("{id}"), HttpPut]
-        public async Task<IActionResult> Alterar([FromRoute] int id, [FromBody] Contato contato)
+        public async Task<IActionResult> Alterar([FromRoute] int id, [FromBody] Agencia agencia)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (id != contato.Id) BadRequest("Os ids são diferentes");
-            _contatoRepositorio.Atualizar(contato);
-            return Ok(contato);
+            if (id != agencia.Id) BadRequest("Os ids são diferentes");
+            _agenciaRepositorio.Atualizar(agencia);
+            return Ok(agencia);
         }
 
         [Route("{id}"), HttpDelete]
-        public async Task<IActionResult> Remover([FromBody] Contato contato)
+        public async Task<IActionResult> Remover([FromBody] Agencia agencia)
         {
             if (!ModelState.IsValid) return BadRequest();
-            _contatoRepositorio.Remover(contato);
+            _agenciaRepositorio.Remover(agencia);
             return Ok("Excluído com sucesso");
         }
     }

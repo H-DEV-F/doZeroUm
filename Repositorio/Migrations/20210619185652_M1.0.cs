@@ -7,6 +7,23 @@ namespace Repositorio.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Agencias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Endereco = table.Column<string>(nullable: true),
+                    Bairro = table.Column<string>(nullable: true),
+                    Cidade = table.Column<string>(nullable: true),
+                    Estado = table.Column<string>(nullable: true),
+                    CEP = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Agencias", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
                 {
@@ -37,6 +54,12 @@ namespace Repositorio.Migrations
                 {
                     table.PrimaryKey("PK_Contas", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Contas_Agencias_AgenciaId",
+                        column: x => x.AgenciaId,
+                        principalTable: "Agencias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Contas_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
@@ -66,6 +89,11 @@ namespace Repositorio.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Contas_AgenciaId",
+                table: "Contas",
+                column: "AgenciaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Contas_ClienteId",
                 table: "Contas",
                 column: "ClienteId",
@@ -84,6 +112,9 @@ namespace Repositorio.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contatos");
+
+            migrationBuilder.DropTable(
+                name: "Agencias");
 
             migrationBuilder.DropTable(
                 name: "Clientes");
